@@ -1,0 +1,1 @@
+val hw = new HelloWorld
