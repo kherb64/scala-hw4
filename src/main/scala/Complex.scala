@@ -22,17 +22,22 @@ class Complex(t: String, d1: Double, d2: Double) {
   }
 
 
-  def Polar(radius: Double, phi: Double) = {
+  /* def Polar(radius: Double, phi: Double) = {
     re = radius * math.cos(phi)
     im = radius * math.sin(phi)
-  }
+  } */
 
   def rad = math.sqrt(re * re + im * im)
 
   def phi = {
-    if (im == 0) 0.0
+    if (im == 0 && re == 0) throw new IllegalArgumentException("Divide by 0")
     else
-      math.atan2(im, re)
+    if (im == 0) 0.0
+    else {
+      val z = math.atan2(im, re)
+      if (z > 0) z
+      else z + 2 * math.Pi
+    }
   }
 
   override def toString = {
