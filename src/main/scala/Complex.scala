@@ -2,6 +2,7 @@ package hw4
 
 /**
   * Created by herb on 09.10.16.
+  * Version 1.0.1
   */
 class Complex(t: String, d1: Double, d2: Double) {
   def this(real: Double, imaginary: Double) = this("cartesian", real, imaginary)
