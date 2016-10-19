@@ -73,20 +73,20 @@ class Complex(t: String, d1: Double, d2: Double) {
   }
 
   def /(c2: Complex): Complex = {
-    if (c2.rad == 0) throw new IllegalArgumentException("NaN")
+    if (c2.rad == 0.0) throw new ArithmeticException("/ by zero")
     else
     //      new Complex("polar", rad / c2.rad, phi - c2.phi)
       new Complex((re * c2.re + im * c2.im), (-re * c2.im + im * c2.re)) / (c2.re * c2.re + c2.im * c2.im)
   }
 
   def /(r2: Double): Complex = {
-    if (r2 == 0) throw new IllegalArgumentException("NaN")
+    if (r2 == 0.0) throw new ArithmeticException("/ by zero")
     else
       new Complex(re / r2, im / r2)
   }
 
   def /(i2: Int): Complex = {
-    if (i2 == 0) throw new IllegalArgumentException("NaN")
+    if (i2 == 0) throw new ArithmeticException("/ by zero")
     else
       new Complex(re / i2, im / i2)
   }

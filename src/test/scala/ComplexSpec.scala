@@ -43,7 +43,6 @@ class ComplexSpec extends UnitSpec {
     }
   }
 
-
   "A complex number on the first meridian" should "have an equal real and imaginary part" in {
     assert(new Complex(0, 0).im == new Complex(0, 0).re)
     assert(new Complex(1, 1).im == new Complex(1, 1).re)
@@ -74,6 +73,17 @@ class ComplexSpec extends UnitSpec {
     assert(new Complex(2, -2).phi == 7 * math.Pi / 4)
   }
 
+  "Any complex number" should "throw an ArithmeticException when divided by zero" in {
+    assertThrows[ArithmeticException] {
+      new Complex(1, 1) / 0
+    }
+    assertThrows[ArithmeticException] {
+      new Complex(1, 1) / 0.0
+    }
+    assertThrows[ArithmeticException] {
+      new Complex(1, 1) / new Complex(0, 0)
+    }
+  }
 
 
   /* it should "produce NoSuchElementException when head is invoked" in {
