@@ -1,7 +1,7 @@
 package hw4
 
 /**
-  * Created by herb on 09.10.16.
+  * A class for complex numbers providing the 4 basic mathematical operations.
   */
 class Complex(t: String, d1: Double, d2: Double) {
   def this(real: Double, imaginary: Double) = this("cartesian", real, imaginary)
@@ -41,8 +41,13 @@ class Complex(t: String, d1: Double, d2: Double) {
   }
 
   override def toString = {
-    val ph = phi * 2 / math.Pi
-    f"($re%4.2f/$im%4.2f) ($rad%4.2f+$ph%4.2f pi/2)"
+    val ph = phi / (math.Pi / 2.0)
+    val imSign:String = math.signum(im) match {
+      case -1 => ""
+      case _ => "+"
+    }
+    f"($re%4.2f$imSign$im%4.2fj) ($rad%4.2f+$ph%4.2fπ/2)"
+
   }
 
   def +(c2: Complex): Complex = new Complex(re + c2.re, im + c2.im)
