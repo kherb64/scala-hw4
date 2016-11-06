@@ -19,11 +19,20 @@ class Complex(val re: Double, val im: Double) {
 
   override def toString = {
     val ph = phi / (math.Pi / 2.0)
-    val imSign: String = math.signum(im) match {
-      case -1 => ""
-      case _ => "+"
+    val imSign: String = if (math.signum(im) == -1) "" else "+"
+
+    //f"($re%4.2f$imSign$im%4.2fj) ($rad%4.2f+$ph%4.2fπ/2)"
+
+    def repr(prefix: String, coeff: Double, postfix: String): String = coeff match {
+      case 0.0 => ""
+      case 1.0 if postfix > "" => postfix
+      case 1.0 => "1"
+      case -1.0 if postfix > "" => "-" + postfix
+      case _ if coeff.isWhole() => prefix + coeff.toInt.toString + postfix
+      case _ => prefix + coeff.toString + postfix
     }
-    f"($re%4.2f$imSign$im%4.2fj) ($rad%4.2f+$ph%4.2fπ/2)"
+
+    repr("", re, "") + repr(imSign, im, Complex.imaginaryNotation.toString) + " " + f"($rad%4.2f+$ph%4.2fπ/2)"
 
   }
 
@@ -32,10 +41,12 @@ class Complex(val re: Double, val im: Double) {
     case _ => false
   }
 
-  def +(x: Any): Complex = x match {
+  def +(a: Any): Complex = a match {
     case c: Complex => new Complex(re + c.re, im + c.im)
     case r: Double => new Complex(re + r, im)
+    case f: Float => new Complex(re + f, im)
     case i: Int => new Complex(re + i, im)
+    case l: Long => new Complex(re + l, im)
     case _ => ???
   }
 
@@ -71,16 +82,29 @@ class Complex(val re: Double, val im: Double) {
 }
 
 object Complex {
-  val Cartesian: String = "cartesian"
-  val Polar: String = "polar"
 
-  def apply(d1: Double, d2: Double, t: String = Complex.Cartesian) {
+  object CoordType extends Enumeration {
+    type CoordType = Value
+
+    val Cartesian, Polar = Value
+  }
+
+  object ImaginaryNotation extends Enumeration {
+    type ImaginaryNotation = Value
+
+    val i, j = Value
+  }
+
+  var coordType = CoordType.Cartesian
+  var imaginaryNotation = ImaginaryNotation.j
+
+  def apply(d1: Double, d2: Double, t: CoordType.Value = coordType): Complex = {
 
     t match {
-      case Complex.Cartesian =>
+      case CoordType.Cartesian =>
         new Complex(d1, d2)
 
-      case Complex.Polar =>
+      case CoordType.Polar =>
         new Complex(d1 * math.cos(d2),
           d1 * math.sin(d2))
       case _ => throw new IllegalArgumentException("Unknown Type " + t)
