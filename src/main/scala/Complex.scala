@@ -3,36 +3,13 @@ package hw4
 /**
   * A class for complex numbers providing the 4 basic mathematical operations.
   */
-class Complex(t: String, d1: Double, d2: Double) {
-  def this(real: Double, imaginary: Double) = this("cartesian", real, imaginary)
-
-  var re: Double = _
-  var im: Double = _
-
-  t match {
-    case "cartesian" => {
-      re = d1
-      im = d2
-    }
-    case "polar" => {
-      re = d1 * math.cos(d2)
-      im = d1 * math.sin(d2)
-    }
-    case _ => throw new IllegalArgumentException("Unknown Type " + t)
-  }
-
-
-  /* def Polar(radius: Double, phi: Double) = {
-    re = radius * math.cos(phi)
-    im = radius * math.sin(phi)
-  } */
+class Complex(val re: Double, val im: Double) {
 
   def rad = math.sqrt(re * re + im * im)
 
   def phi = {
     if (im == 0 && re == 0) throw new IllegalArgumentException("Divide by 0")
-    else
-    if (im == 0) 0.0
+    else if (im == 0) 0.0
     else {
       val z = math.atan2(im, re)
       if (z > 0) z
@@ -42,57 +19,96 @@ class Complex(t: String, d1: Double, d2: Double) {
 
   override def toString = {
     val ph = phi / (math.Pi / 2.0)
-    val imSign:String = math.signum(im) match {
-      case -1 => ""
-      case _ => "+"
+    val imSign: String = if (math.signum(im) == -1) "" else "+"
+
+    //f"($re%4.2f$imSign$im%4.2fj) ($rad%4.2f+$ph%4.2fπ/2)"
+
+    def repr(prefix: String, coeff: Double, postfix: String): String = coeff match {
+      case 0.0 => ""
+      case 1.0 if postfix > "" => postfix
+      case 1.0 => "1"
+      case -1.0 if postfix > "" => "-" + postfix
+      case _ if coeff.isWhole() => prefix + coeff.toInt.toString + postfix
+      case _ => prefix + coeff.toString + postfix
     }
-    f"($re%4.2f$imSign$im%4.2fj) ($rad%4.2f+$ph%4.2fπ/2)"
+
+    repr("", re, "") + repr(imSign, im, Complex.imaginaryNotation.toString) + " " + f"($rad%4.2f+$ph%4.2fπ/2)"
 
   }
 
-  def +(c2: Complex): Complex = new Complex(re + c2.re, im + c2.im)
-
-  def +(r2: Double): Complex = new Complex(re + r2, im)
-
-  def +(i2: Int): Complex = new Complex(re + i2, im)
-
-  def -(c2: Complex): Complex = new Complex(re - c2.re, im - c2.im)
-
-  def -(r2: Double): Complex = new Complex(re - r2, im)
-
-  def -(i2: Int): Complex = new Complex(re - i2, im)
-
-  def *(c2: Complex): Complex = {
-    // new Complex("polar", rad * c2.rad, phi + c2.phi)
-    new Complex((re * c2.re - im * c2.im), (re * c2.im + im * c2.re))
+  override def equals(obj: scala.Any): Boolean = obj match {
+    case obj: Complex => re == obj.re && im == obj.im
+    case _ => false
   }
 
-  def *(r2: Double): Complex = {
-    // new Complex("polar", rad * c2, phi)
-    new Complex(re * r2, im * r2)
+  def +(a: Any): Complex = a match {
+    case c: Complex => new Complex(re + c.re, im + c.im)
+    case r: Double => new Complex(re + r, im)
+    case f: Float => new Complex(re + f, im)
+    case i: Int => new Complex(re + i, im)
+    case l: Long => new Complex(re + l, im)
+    case _ => ???
   }
 
-  def *(i2: Int): Complex = {
-    // new Complex("polar", rad * c2, phi)
-    new Complex(re * i2, im * i2)
+  def -(x: Any): Complex = x match {
+    case c: Complex => new Complex(re - c.re, im - c.im)
+    case r: Double => new Complex(re - r, im)
+    case i: Int => new Complex(re - i, im)
+    case _ => ???
   }
 
-  def /(c2: Complex): Complex = {
-    if (c2.rad == 0.0) throw new ArithmeticException("/ by zero")
-    else
-    //      new Complex("polar", rad / c2.rad, phi - c2.phi)
-      new Complex((re * c2.re + im * c2.im), (-re * c2.im + im * c2.re)) / (c2.re * c2.re + c2.im * c2.im)
+  def *(x: Any): Complex = x match {
+    case c: Complex => new Complex((re * c.re - im * c.im), (re * c.im + im * c.re))
+    case r: Double => new Complex(re * r, im * r)
+    case i: Int => new Complex(re * i, im * i)
+    case _ => ???
   }
 
-  def /(r2: Double): Complex = {
-    if (r2 == 0.0) throw new ArithmeticException("/ by zero")
-    else
-      new Complex(re / r2, im / r2)
+  def /(x: Any): Complex = x match {
+    case c: Complex =>
+      if (c.rad == 0.0) throw new ArithmeticException("/ by zero")
+      else
+        new Complex((re * c.re + im * c.im), (-re * c.im + im * c.re)) / (c.re * c.re + c.im * c.im)
+    case r2: Double =>
+      if (r2 == 0.0) throw new ArithmeticException("/ by zero")
+      else
+        new Complex(re / r2, im / r2)
+    case i2: Int =>
+      if (i2 == 0) throw new ArithmeticException("/ by zero")
+      else
+        new Complex(re / i2, im / i2)
+    case _ => ???
+  }
+}
+
+object Complex {
+
+  object CoordType extends Enumeration {
+    type CoordType = Value
+
+    val Cartesian, Polar = Value
   }
 
-  def /(i2: Int): Complex = {
-    if (i2 == 0) throw new ArithmeticException("/ by zero")
-    else
-      new Complex(re / i2, im / i2)
+  object ImaginaryNotation extends Enumeration {
+    type ImaginaryNotation = Value
+
+    val i, j = Value
+  }
+
+  var coordType = CoordType.Cartesian
+  var imaginaryNotation = ImaginaryNotation.j
+
+  def apply(d1: Double, d2: Double, t: CoordType.Value = coordType): Complex = {
+
+    t match {
+      case CoordType.Cartesian =>
+        new Complex(d1, d2)
+
+      case CoordType.Polar =>
+        new Complex(d1 * math.cos(d2),
+          d1 * math.sin(d2))
+      case _ => throw new IllegalArgumentException("Unknown Type " + t)
+    }
+
   }
 }
