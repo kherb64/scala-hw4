@@ -22,7 +22,7 @@ object DecryptApp extends App {
 
   }
 
-  val encrypted = "qcbswidBdostEhxsUOh+8EWMDDRtBC+bvLXg9jzoHww="
+  val encrypted = "O8kpg5gZ/+XMSONeL3AN7A=="
 
   // Replace FFFFFF and LLLLLL by the first-name and last-name of the
   // creator of Scala, respectively. First letters uppercased, rest
