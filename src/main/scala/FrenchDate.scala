@@ -3,11 +3,11 @@
   */
 
 import java.text.DateFormat._
-import java.util.{Date, Locale}
+import java.util.Locale
 
 object FrenchDate {
   def main(args: Array[String]) {
-    val now = new Date
+    val now = new java.util.Date
     val df = getDateInstance(LONG, Locale.FRANCE)
     println(df format now)
   }
