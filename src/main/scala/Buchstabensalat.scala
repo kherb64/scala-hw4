@@ -1,7 +1,7 @@
 object Buchstabensalat {
   // val original = "Birgit Stegsund Eutin"
-  val original = "leki"
-  val original2 = List[Char]('b', 'i', 'r')
+  val original = "coknle"
+  // val original3 = List[Char]('b', 'r', 'l', 'l', 'i', 'e').toString()
 
   def main(args: Array[String]) {
     // println(pick(original, 1))
