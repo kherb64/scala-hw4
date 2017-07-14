@@ -1,13 +1,13 @@
-package hw4
+
 
 /**
   * A class for complex numbers providing the 4 basic mathematical operations.
   */
 class Complex(val re: Double, val im: Double) {
 
-  def rad = math.sqrt(re * re + im * im)
+  def rad: Double = math.sqrt(re * re + im * im)
 
-  def phi = {
+  def phi: Double = {
     if (im == 0 && re == 0) throw new IllegalArgumentException("Divide by 0")
     else if (im == 0) 0.0
     else {
@@ -17,7 +17,7 @@ class Complex(val re: Double, val im: Double) {
     }
   }
 
-  override def toString = {
+  override def toString: String = {
     val ph = phi / (math.Pi / 2.0)
     val imSign: String = if (math.signum(im) == -1) "" else "+"
 
@@ -58,7 +58,7 @@ class Complex(val re: Double, val im: Double) {
   }
 
   def *(x: Any): Complex = x match {
-    case c: Complex => new Complex((re * c.re - im * c.im), (re * c.im + im * c.re))
+    case c: Complex => new Complex(re * c.re - im * c.im, re * c.im + im * c.re)
     case r: Double => new Complex(re * r, im * r)
     case i: Int => new Complex(re * i, im * i)
     case _ => ???
@@ -68,7 +68,7 @@ class Complex(val re: Double, val im: Double) {
     case c: Complex =>
       if (c.rad == 0.0) throw new ArithmeticException("/ by zero")
       else
-        new Complex((re * c.re + im * c.im), (-re * c.im + im * c.re)) / (c.re * c.re + c.im * c.im)
+        new Complex(re * c.re + im * c.im, -re * c.im + im * c.re) / (c.re * c.re + c.im * c.im)
     case r2: Double =>
       if (r2 == 0.0) throw new ArithmeticException("/ by zero")
       else
@@ -96,7 +96,7 @@ object Complex {
   }
 
   var coordType = CoordType.Cartesian
-  var imaginaryNotation = ImaginaryNotation.j
+  var imaginaryNotation: ImaginaryNotation.Value = ImaginaryNotation.j
 
   def apply(d1: Double, d2: Double, t: CoordType.Value = coordType): Complex = {
 
