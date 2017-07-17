@@ -10,8 +10,6 @@ object Postcard {
     val relatives = List("Grandma", "Grandpa", "Aunt Dottie", "Dad")
     val travellers = List("Kelsey", "DJ")
 
-    // var postcardList: List[Postcard] = List()
-
     for {
       traveller <- travellers
       sender = traveller + " (your favorite)"
@@ -24,8 +22,6 @@ object Postcard {
         theState + "! " +
         "Love, " + sender)
     }
-
-    // postcardList
   }
 
 
