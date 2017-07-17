@@ -12,13 +12,13 @@ object Postcard {
 
     var postcardList: List[Postcard] = List()
 
-    for (h <- 0 until travellers.length) {
+    for (h <- travellers.indices) {
       val sender = travellers(h)
 
-      for (i <- 0 until relatives.length) {
+      for (i <- relatives.indices) {
         val recipient = relatives(i)
 
-        for (j <- 0 until states.length) {
+        for (j <- states.indices) {
           val theState = states(j)
           postcardList ::=
             new Postcard("Dear " + recipient + ", " +
