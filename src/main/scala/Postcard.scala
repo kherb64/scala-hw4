@@ -10,26 +10,22 @@ object Postcard {
     val relatives = List("Grandma", "Grandpa", "Aunt Dottie", "Dad")
     val travellers = List("Kelsey", "DJ")
 
-    var postcardList: List[Postcard] = List()
+    // var postcardList: List[Postcard] = List()
 
-    for (h <- travellers.indices) {
-      val sender = travellers(h)
-
-      for (i <- relatives.indices) {
-        val recipient = relatives(i)
-
-        for (j <- states.indices) {
-          val theState = states(j)
-          postcardList ::=
-            new Postcard("Dear " + recipient + ", " +
-              "Wish you were here in " +
-              theState + "! " +
-              "Love, " + sender)
-        }
-      }
+    for {
+      traveller <- travellers
+      sender = traveller + " (your favorite)"
+      relative <- relatives
+      theState <- states
+      // if relative.startsWith("G")
+    } yield {
+      new Postcard("Dear " + relative + ", " +
+        "Wish you were here in " +
+        theState + "! " +
+        "Love, " + sender)
     }
 
-    postcardList
+    // postcardList
   }
 
 
