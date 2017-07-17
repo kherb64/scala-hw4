@@ -15,7 +15,7 @@ object Postcard {
       sender = traveller + " (your favorite)"
       relative <- relatives
       theState <- states
-      // if relative.startsWith("G")
+      if relative.startsWith("G")
     } yield {
       new Postcard("Dear " + relative + ", " +
         "Wish you were here in " +
