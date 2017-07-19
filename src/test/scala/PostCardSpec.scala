@@ -7,7 +7,7 @@ class PostCardSpec extends UnitSpec {
     true shouldBe true
   }
 
-  val numPostCards = 72
+  val numPostCards = 36 // with filter
   "Postcardslist" should s"have $numPostCards entries" in {
     Postcard.sendPostcards.length shouldBe numPostCards
   }
