@@ -4,8 +4,8 @@
   */
 
 class Hurzi /* extends Int */ {
-  def unary_~ = { -1 }
-  def == = { true }
-  def toDouble = { 1.0d }
-  def == (b:Byte) = { true }
+  def unary_~ : Int = { -1 }
+  def == : Boolean = { true }
+  def toDouble: Double = { 1.0d }
+  def == (b:Byte): Boolean = { true }
 }

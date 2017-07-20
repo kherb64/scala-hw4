@@ -95,7 +95,7 @@ class ComplexSpec extends UnitSpec {
     assert(new Complex(1, -1) * 3.0 == new Complex(3, -3))
   }
 
-  "Complex numbers" should "divide in a corect way" in {
+  "Complex numbers" should "divide in a correct way" in {
     assert(new Complex(2, 2) / new Complex(1, 0) == new Complex(2, 2))
     assert(new Complex(3, 3) / new Complex(0, 1) == new Complex(3, -3))
   }

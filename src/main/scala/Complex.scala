@@ -47,21 +47,18 @@ class Complex(val re: Double, val im: Double) {
     case f: Float => new Complex(re + f, im)
     case i: Int => new Complex(re + i, im)
     case l: Long => new Complex(re + l, im)
-    case _ => ???
   }
 
   def -(x: Any): Complex = x match {
     case c: Complex => new Complex(re - c.re, im - c.im)
     case r: Double => new Complex(re - r, im)
     case i: Int => new Complex(re - i, im)
-    case _ => ???
   }
 
   def *(x: Any): Complex = x match {
     case c: Complex => new Complex(re * c.re - im * c.im, re * c.im + im * c.re)
     case r: Double => new Complex(re * r, im * r)
     case i: Int => new Complex(re * i, im * i)
-    case _ => ???
   }
 
   def /(x: Any): Complex = x match {
@@ -77,7 +74,6 @@ class Complex(val re: Double, val im: Double) {
       if (i2 == 0) throw new ArithmeticException("/ by zero")
       else
         new Complex(re / i2, im / i2)
-    case _ => ???
   }
 }
 
@@ -95,8 +91,8 @@ object Complex {
     val i, j = Value
   }
 
-  var coordType = CoordType.Cartesian
-  var imaginaryNotation: ImaginaryNotation.Value = ImaginaryNotation.j
+  val coordType = CoordType.Cartesian
+  val imaginaryNotation: ImaginaryNotation.Value = ImaginaryNotation.j
 
   def apply(d1: Double, d2: Double, t: CoordType.Value = coordType): Complex = {
 
