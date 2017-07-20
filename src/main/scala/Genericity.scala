@@ -26,7 +26,7 @@ object MyTypeReference {
   def main(args: Array[String]): Unit = {
     val cell = new Reference[MyType]
     cell.set(MyType("k", "h"))
-    println("Reference contains " + (cell.get))
-    println("Reference reverses " + (cell.get.reverse))
+    println("Reference contains " + cell.get)
+    println("Reference reverses " + cell.get.reverse)
   }
 }

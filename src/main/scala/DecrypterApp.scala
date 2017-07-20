@@ -2,7 +2,7 @@ import java.util.Base64
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
-object DecryptApp extends App {
+object DecrypterApp extends App {
 
   object Decrypter {
 
