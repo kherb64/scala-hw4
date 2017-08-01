@@ -22,7 +22,7 @@ class BindingSpec extends UnitSpec {
     Binding.flatMap == resultFlatMap
   }
 
-  "yieldi" should s"return  ${ resultMap.length } entries " in {
+  "`yield`" should s"return  ${ resultMap.length } entries " in {
     Binding.`yield`.length shouldBe resultMap.length
   }
 
