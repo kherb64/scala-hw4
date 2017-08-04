@@ -30,6 +30,4 @@ class BindingSpec extends UnitSpec {
     Binding.flatMap == resultMap
   }
 
-  //"14.7.1581" should "throw an illegal argument exception" in {
-  //  assertThrows[IllegalArgumentException](new Date(1581, 7, 14))
 }
