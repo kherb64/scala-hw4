@@ -1,9 +1,7 @@
 package hw4.numbers
 
-import java.time.LocalDateTime
-
 import hw4.UnitSpec
-
+import java.time.LocalDateTime
 import Numbers._
 
 class NumbersSpec extends UnitSpec {
