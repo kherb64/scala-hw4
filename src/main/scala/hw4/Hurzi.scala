@@ -1,3 +1,5 @@
+package hw4
+
 /**
   * Created by herb on 11.10.2016.
   * Conclusion: do not use user defined value classes at an early stage of knowledge!

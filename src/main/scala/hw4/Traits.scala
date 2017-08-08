@@ -1,3 +1,4 @@
+package hw4
 
 trait Ord {
   def <(that: Any): Boolean

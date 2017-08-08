@@ -1,3 +1,5 @@
+package hw4
+
 class BindingSpec extends UnitSpec {
 
   "Tests" should "be working" in {
