@@ -1,4 +1,4 @@
-package hw4
+package hw4.complex
 
 /**
   * A class for complex numbers providing the 4 basic mathematical operations.

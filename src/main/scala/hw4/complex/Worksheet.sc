@@ -1,5 +1,5 @@
-import hw4.Complex
-import hw4.Complex._
+import hw4.complex.Complex
+import hw4.complex.Complex._
 
 // val hw = new HelloWorld
 

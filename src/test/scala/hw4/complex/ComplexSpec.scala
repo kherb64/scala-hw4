@@ -1,4 +1,6 @@
-package hw4
+package hw4.complex
+
+import hw4.UnitSpec
 
 /**
   * Created by herb on 09.10.16.
