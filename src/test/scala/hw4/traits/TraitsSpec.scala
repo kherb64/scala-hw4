@@ -1,4 +1,6 @@
-package hw4
+package hw4.traits
+
+import hw4.UnitSpec
 
 /**
   * Created by herb on 14.07.2017.
