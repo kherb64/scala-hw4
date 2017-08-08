@@ -1,3 +1,4 @@
+package hw4
 
 trait Ord {
   def <(that: Any): Boolean
@@ -16,7 +17,6 @@ class Date(y: Int, m: Int, d: Int) extends Ord {
   require(m >= 1 && m <= 12)
   require(d >= 1 && d <= 31)
 
-  // TODO: real date requirement
   java.time.LocalDate.of(y, m, d)
   if (y <= 1582) println("Warning, historical dates may be wrong.")
 

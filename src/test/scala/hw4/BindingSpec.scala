@@ -1,3 +1,5 @@
+package hw4
+
 class BindingSpec extends UnitSpec {
 
   "Tests" should "be working" in {
@@ -22,7 +24,7 @@ class BindingSpec extends UnitSpec {
     Binding.flatMap == resultFlatMap
   }
 
-  "yieldi" should s"return  ${ resultMap.length } entries " in {
+  "`yield`" should s"return  ${ resultMap.length } entries " in {
     Binding.`yield`.length shouldBe resultMap.length
   }
 
@@ -30,6 +32,4 @@ class BindingSpec extends UnitSpec {
     Binding.flatMap == resultMap
   }
 
-  //"14.7.1581" should "throw an illegal argument exception" in {
-  //  assertThrows[IllegalArgumentException](new Date(1581, 7, 14))
 }

@@ -1,3 +1,5 @@
+package hw4
+
 object Binding {
 
   def main(args: Array[String]) {

@@ -1,3 +1,5 @@
+package hw4
+
 case class Postcard(msg: String)
 
 object Postcard {

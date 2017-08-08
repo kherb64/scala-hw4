@@ -1,3 +1,5 @@
+package hw4
+
 object Buchstabensalat {
   // val original = "Birgit Stegsund Eutin"
   val original = "coknle"

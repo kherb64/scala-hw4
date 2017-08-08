@@ -1,12 +1,11 @@
-import hw4.Complex.CoordType._
-import hw4.Complex.ImaginaryNotation._
-import hw4._
+import hw4.Complex
+import hw4.Complex._
 
 // val hw = new HelloWorld
 
 val c1 = Complex(2, -2)
 // Complex.imaginaryNotation = j
-val c2 = Complex(1, -1, Cartesian)
+val c2 = Complex(1, -1, CoordType.Cartesian)
 
 c1 + c2
 c1 - c2
@@ -33,7 +32,7 @@ c2.im
 c2.rad
 c2.phi / math.Pi
 
-val c3 = Complex(math.sqrt(2), math.Pi / 4, Polar)
+val c3 = Complex(math.sqrt(2), math.Pi / 4, CoordType.Polar)
 c3
 
 2.1d.isWhole()
