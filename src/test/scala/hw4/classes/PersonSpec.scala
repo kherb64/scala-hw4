@@ -8,8 +8,8 @@ class PersonSpec extends UnitSpec {
     true shouldBe true
   }
 
-  var first = "Herbert"
-  var last = "Kreutzer"
+  val first = "Herbert"
+  val last = "Kreutzer"
   val p = new Person(first, last)
   s"Person($first, $last)" should "not be null" in {
     p should not be null
