@@ -10,7 +10,9 @@ class PizzaSpec extends UnitSpec2 {
   }
 
   "initialization tests" - {
-    "default pizza w/o any modifications" in initTest(new Pizza())
+    "default pizza w/o any modifications" in {
+      initTest(new Pizza())
+    }
     "pizza with initial size" in {
       val size = 14
       initTest(new Pizza(size), size)
@@ -27,23 +29,26 @@ class PizzaSpec extends UnitSpec2 {
   }
 
   "modification tests" - {
+    val sizes = List(15, 14, 16)
+    val crusts = List("THICK", "SLICK", "EMPTY")
+
     "change size" in {
       val p = new Pizza()
-      for (s <- List(15, 14, 16)) {
+      for (s <- sizes) {
         modiSize(p, s)
       }
     }
     "change crust" in {
       val p = new Pizza()
-      for (c <- List("THICK", "SLICK", "EMPTY")) {
+      for (c <- crusts) {
         modiCrust(p, c)
       }
     }
     "change size and crust" in {
       val p = new Pizza()
       for {
-        s <- List(15, 14, 16)
-        c <- List("THICK", "SLICK", "EMPTY")
+        s <- sizes
+        c <- crusts
       } {
         modiSize(p, s)
         modiCrust(p, c)
@@ -57,6 +62,7 @@ class PizzaSpec extends UnitSpec2 {
       modiCrust(p, "Lightyears")
     }
   }
+
 
   def initTest(
     p: Pizza,
@@ -99,14 +105,11 @@ class PizzaSpec extends UnitSpec2 {
   }
 
   /**
-    * Tests Pizza.toString
+    * Test Pizza.toString for plausibility
     *
     * @param p Pizza instance
     */
   def readTest(p: Pizza): Unit = {
-    //println(s"${ p.crustSize },${ p.crustType }")
-
-    // val t = s"A ${ p.crustSize } inch pizza with a ${ p.crustType } crust"
     p.toString should include("pizza")
     p.toString should include(p.crustSize.toString)
     p.toString should include(p.crustType)
