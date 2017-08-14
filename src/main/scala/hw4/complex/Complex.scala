@@ -1,5 +1,7 @@
 package hw4.complex
 
+import hw4.complex.Complex.CoordType
+
 /**
   * A class for complex numbers providing the 4 basic mathematical operations.
   */
@@ -91,7 +93,7 @@ object Complex {
     val i, j = Value
   }
 
-  val coordType = CoordType.Cartesian
+  val coordType: CoordType.Value = CoordType.Cartesian
   val imaginaryNotation: ImaginaryNotation.Value = ImaginaryNotation.j
 
   def apply(d1: Double, d2: Double, t: CoordType.Value = coordType): Complex = {

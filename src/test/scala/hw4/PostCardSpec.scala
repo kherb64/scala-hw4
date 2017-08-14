@@ -10,6 +10,7 @@ class PostCardSpec extends UnitSpec {
   }
 
   val numPostCards = 36 // with filter
+  //noinspection SpellCheckingInspection
   "Postcardslist" should s"have $numPostCards entries" in {
     Postcard.sendPostcards.length shouldBe numPostCards
   }

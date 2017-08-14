@@ -18,11 +18,13 @@ class PizzaSpec extends UnitSpec2 {
       initTest(new Pizza(size), size)
     }
     "pizza with initial crust" in {
+      //noinspection SpellCheckingInspection
       val crust = "NAPOLI"
       initTest(new Pizza(crustType = crust), iniCrust = crust)
     }
     "pizza with initial size and crust" in {
       val size = 53
+      //noinspection SpellCheckingInspection
       val crust = "BERTL"
       initTest(new Pizza(size, crust), size, crust)
     }
@@ -35,13 +37,13 @@ class PizzaSpec extends UnitSpec2 {
     "change size" in {
       val p = new Pizza()
       for (s <- sizes) {
-        modiSize(p, s)
+        modifySize(p, s)
       }
     }
     "change crust" in {
       val p = new Pizza()
       for (c <- crusts) {
-        modiCrust(p, c)
+        modifyCrust(p, c)
       }
     }
     "change size and crust" in {
@@ -50,16 +52,17 @@ class PizzaSpec extends UnitSpec2 {
         s <- sizes
         c <- crusts
       } {
-        modiSize(p, s)
-        modiCrust(p, c)
+        modifySize(p, s)
+        modifyCrust(p, c)
       }
     }
     "change size or crust" in {
       val p = new Pizza()
-      modiSize(p, 16)
-      modiCrust(p, "Very Thin")
-      modiSize(p, -2)
-      modiCrust(p, "Lightyears")
+      modifySize(p, 16)
+      modifyCrust(p, "Very Thin")
+      modifySize(p, -2)
+      //noinspection SpellCheckingInspection
+      modifyCrust(p, "Lightyears")
     }
   }
 
@@ -81,7 +84,7 @@ class PizzaSpec extends UnitSpec2 {
 
   }
 
-  def modiSize(
+  def modifySize(
     p: Pizza,
     newSize: Int): Unit = {
 
@@ -93,7 +96,7 @@ class PizzaSpec extends UnitSpec2 {
 
   }
 
-  def modiCrust(
+  def modifyCrust(
     p: Pizza,
     newCrust: String): Unit = {
     // println(s"${ p.crustSize },${ p.crustType } => ${ p.crustSize },$newCrust")
