@@ -13,7 +13,7 @@ object Numbers {
     try {
       Some(s.toInt)
     } catch {
-      case NumberFormatException => None
+      case _: NumberFormatException => None
     }
   }
 
