@@ -27,15 +27,18 @@ object Animal {
 
   sealed trait Typ
 
+  case object BertlTyp extends Typ
+
   case object DogTyp extends Typ
 
   case object CatTyp extends Typ
 
   // the factory method
-  def apply(t: Typ): Animal = {
+  def apply(t: Typ): Option[Animal] = {
     t match {
-      case DogTyp => Dog()
-      case CatTyp => Cat()
+      case DogTyp => Some(Dog())
+      case CatTyp => Some(Cat())
+      case BertlTyp => None
     }
   }
 }
@@ -51,13 +54,14 @@ object AnimalMain extends App {
   // println(Animal.Cat()) // hidden by private object
 
   // factory
-  val dog = Animal(DogTyp)
+  val dog = Animal(DogTyp).get
   println(dog)
   dog.speak()
-  val cat = Animal(CatTyp)
+  val cat = Animal(CatTyp).get
   println(cat)
   cat.speak()
-  // println(Animal(Animal.Bertl))
-
+  val bertl = Animal(Animal.BertlTyp).get
+  println(bertl)
+  bertl.speak()
 
 }
