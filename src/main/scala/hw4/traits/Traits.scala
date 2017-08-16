@@ -1,52 +1,80 @@
 package hw4.traits
 
-trait Ord {
-  def <(that: Any): Boolean
+object Foo
 
-  def >(that: Any): Boolean = !(this <= that)
+trait BaseSoundPlayer {
+  def play()
 
-  def <=(that: Any): Boolean = (this < that) || (this == that)
+  def close()
 
-  def >=(that: Any): Boolean = !(this < that)
+  def pause()
+
+  def stop()
+
+  def resume()
 }
 
-class Date(y: Int, m: Int, d: Int) extends Ord {
+trait Dog2 {
+  def speak(whatToSay: String)
 
-  // basic requirements
-  require(y >= 1582)
-  require(m >= 1 && m <= 12)
-  require(d >= 1 && d <= 31)
+  private var wagTail: Boolean = _
 
-  java.time.LocalDate.of(y, m, d)
-  if (y <= 1582) println("Warning, historical dates may be wrong.")
-
-  override def toString: String = year + "-" + month + "-" + day
-
-  override def equals(that: Any): Boolean =
-    that.isInstanceOf[Date] && {
-      val o = that.asInstanceOf[Date]
-      o.day == day && o.month == month && o.year == year
-    }
-
-  override def <(that: Any): Boolean = {
-    if (!that.isInstanceOf[Date])
-      sys.error("cannot compare " + that + " and a Date")
-    val o = that.asInstanceOf[Date]
-    (year < o.year) ||
-      (year == o.year && (month < o.month ||
-        (month == o.month && day < o.day)))
+  def startWag(): Unit = {
+    wagTail = true
   }
 
-  def year: Int = y
-
-  def month: Int = m
-
-  def day: Int = d
+  def stopWag(): Unit = {
+    wagTail = false
+  }
 }
 
-object Date {
-  def main(args: Array[String]) {
-    println(new Date(2001, 1, 1))
-    println(new Date(2002, 2, 28))
+class Mp3SoundPlayer extends BaseSoundPlayer {
+
+  private var playing: Boolean = _
+  private var pausedAt: Long = _
+
+  override def play(): Unit = {
+    playing = true
   }
+
+  override def close(): Unit = {}
+
+  override def pause(): Unit = {
+    playing = false
+    pausedAt = currentPosition()
+  }
+
+  override def stop(): Unit = {
+    playing = false
+    pausedAt = 0
+  }
+
+  def setCurrentPosition(pausedAt: Long): Unit = {}
+
+  override def resume(): Unit = {
+    setCurrentPosition(pausedAt)
+    playing = true
+  }
+
+  def currentPosition(): Long = {
+    0L
+  }
+}
+
+abstract class SimpleSoundPlayer extends BaseSoundPlayer {
+  def play(): Unit = {}
+
+  def close(): Unit = {}
+}
+
+case class BasicPlayer()
+
+case class BasicController()
+
+trait Mp3BaseSoundFilePlayer extends BaseSoundPlayer {
+  def getBasicPlayer: BasicPlayer
+
+  def getBasicController: BasicController
+
+  def setGain(volume: Double)
 }
