@@ -1,7 +1,9 @@
+package at.co.sdt.herb.hw4
+
 /**
   * my first package object
   */
-package object hw4 {
+package object po {
 
   /**
     * print package object's name

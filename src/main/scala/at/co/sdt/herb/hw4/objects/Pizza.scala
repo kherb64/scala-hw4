@@ -32,5 +32,6 @@ object PizzaMain extends App {
   val p2 = Pizza("burli")
   println(p2)
 
+  import at.co.sdt.herb.hw4._
   po()
 }
