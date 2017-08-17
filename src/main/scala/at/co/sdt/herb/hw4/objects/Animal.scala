@@ -29,6 +29,8 @@ object Animal {
 
   case object BertlTyp extends Typ
 
+  case object Bertl2Typ extends Typ
+
   case object DogTyp extends Typ
 
   case object CatTyp extends Typ
