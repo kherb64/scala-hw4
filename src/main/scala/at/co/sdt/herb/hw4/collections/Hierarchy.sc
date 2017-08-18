@@ -19,5 +19,6 @@ var set3 = set1
 set3 += 5
 set3.mkString
 
-set1 + 7
+set3 + 7
 
+val x = List[Number](1, 2.0, 33D, 400L)
