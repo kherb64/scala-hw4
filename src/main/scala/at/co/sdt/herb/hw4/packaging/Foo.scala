@@ -1,5 +1,3 @@
-package at.co.sdt.herb.hw4.packaging
-
 // a package containing a class named Foo
 package orderentry {
 
@@ -27,7 +25,7 @@ package customers {
 }
 
 // a simple object to test the packages and classes
-object PackageTests extends App {
+object Foo extends App {
   println(new orderentry.Foo)
   println(new customers.Foo)
   println(new customers.database.Foo)

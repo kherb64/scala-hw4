@@ -1,7 +1,5 @@
 package at.co.sdt.herb.hw4.objects
 
-import at.co.sdt.herb.hw4._
-
 /**
   * Pizza class
   */
@@ -32,6 +30,5 @@ object PizzaMain extends App {
   val p2 = Pizza("burli")
   println(p2)
 
-  import at.co.sdt.herb.hw4._
-  po()
+  po.po()
 }
