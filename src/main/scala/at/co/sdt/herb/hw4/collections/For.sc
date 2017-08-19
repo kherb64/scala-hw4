@@ -31,9 +31,9 @@ def scalProd(v1: Vector1, v2: Vector1): Double = {
 
   def mulT(tuple: (Double, Double)) = { tuple._1 * tuple._2 }
 
-  (v1 zip v2).map(mulT) sum
+  (v1 zip v2).map(mulT).sum
 
-  (v1 zip v2).map(t => t._1 * t._2) sum
+  (v1 zip v2).map(t => t._1 * t._2).sum
 }
 
 scalProd(Array(1, 2), Array(2, 3))
