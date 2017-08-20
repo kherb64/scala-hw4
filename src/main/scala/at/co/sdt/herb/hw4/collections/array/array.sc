@@ -1,5 +1,5 @@
 
-var fruits = Array("cherry", "apple", "banana")
+val fruits = Array("cherry", "apple", "banana")
 
 import scala.util.Sorting
 
