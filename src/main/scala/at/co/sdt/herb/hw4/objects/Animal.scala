@@ -41,6 +41,7 @@ object Animal {
       case DogTyp => Some(Dog())
       case CatTyp => Some(Cat())
       case BertlTyp => None
+      case Bertl2Typ => None //sbt Warning is ok when commented out
     }
   }
 }
