@@ -89,6 +89,7 @@ object Control {
     try {
       f(resource)
     } finally {
+      import scala.language.reflectiveCalls
       resource.close()
     }
 }
