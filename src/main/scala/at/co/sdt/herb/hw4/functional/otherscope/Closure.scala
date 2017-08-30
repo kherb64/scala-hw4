@@ -1,3 +1,5 @@
+package at.co.sdt.herb.hw4.functional
+
 package otherscope {
 
   class Foo {
