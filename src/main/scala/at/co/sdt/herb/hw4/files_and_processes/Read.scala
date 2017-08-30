@@ -7,17 +7,20 @@ import at.co.sdt.herb.hw4
 import scala.io.Source
 
 object Read extends App {
-  new Read().readConcise()
+  // new Read().readConcise()
   new Read().readProperly()
 }
 
 class Read {
-  def resFile(fileName: String): JFile = {
-    new JFile(hw4.resDir + "/" + fileName).getCanonicalFile
+  def resourcesFile(fileName: String): JFile = {
+    new JFile(hw4.resourcesDir + "/" + fileName).getCanonicalFile
   }
 
+  /**
+    * Attention: leaves file open!
+    */
   def readConcise(): Unit = {
-    val file:JFile = resFile("textfile.txt")
+    val file: JFile = resourcesFile("textfile.txt")
 
     println("reading in a concise way")
     for (line <- Source.fromFile(file).getLines) {
@@ -35,7 +38,7 @@ class Read {
 
   def readProperly(): Unit = {
     println("reading porperly")
-    val bufferedSource = Source.fromFile(resFile("textfile.txt"))
+    val bufferedSource = Source.fromFile(resourcesFile("textfile.txt"))
     for (line <- bufferedSource.getLines) {
       println(line)
     }
