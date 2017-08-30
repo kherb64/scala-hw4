@@ -2,9 +2,9 @@ package at.co.sdt.herb.hw4.files_and_processes
 
 import java.io.{ FileNotFoundException, IOException, File => JFile }
 
-import at.co.sdt.herb.hw4
-
 import scala.io.Source
+
+import at.co.sdt.herb.hw4
 
 object Read extends App {
   val whereami = System.getProperty("user.dir")
