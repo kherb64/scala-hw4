@@ -17,8 +17,8 @@ package object hw4 {
 
   import java.io.{ File => JFile }
 
-  lazy val projDir: JFile = new JFile("C:/IdeaProjects/scala-hw4/").getCanonicalFile
-  lazy val resDir: JFile = new JFile(projDir + "/src/main/resources/").getCanonicalFile
+  lazy val projectDir: JFile = new JFile("C:/IdeaProjects/scala-hw4/").getCanonicalFile
+  lazy val resourcesDir: JFile = new JFile(projectDir + "/src/main/resources/").getCanonicalFile
 
 }
 
