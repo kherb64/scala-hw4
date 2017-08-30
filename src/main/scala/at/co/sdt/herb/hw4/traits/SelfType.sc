@@ -29,6 +29,7 @@ class Enterprise2 extends Starship2
   with WarpCoreEjector
   with FireExtinguisher
 
+//noinspection ScalaUnusedSymbol
 trait WarpCore3 {
   this: {
     def ejectWarpCore3(password: String): Boolean
