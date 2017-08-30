@@ -7,6 +7,9 @@ import at.co.sdt.herb.hw4
 import scala.io.Source
 
 object Read extends App {
+  val whereami = System.getProperty("user.dir")
+  println(s"whereami = $whereami")
+
   // new Read().readConcise("textfile.txt")
   // new Read().readProperly("textfile.txt")
   // new Read().readWithLoanPattern("textfile.txt")
