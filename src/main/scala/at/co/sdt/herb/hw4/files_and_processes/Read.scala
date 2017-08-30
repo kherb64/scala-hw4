@@ -7,9 +7,12 @@ import at.co.sdt.herb.hw4
 import scala.io.Source
 
 object Read extends App {
-  // new Read().readConcise()
-  //new Read().readProperly()
-  new Read().readWithLoanPattern()
+  // new Read().readConcise("textfile.txt")
+  // new Read().readProperly("textfile.txt")
+  // new Read().readWithLoanPattern("textfile.txt")
+  val contents = new Read().readTextFile("textfile.txt")
+  println(contents)
+  println(new Read().readTextFile("textfile.txt2"))
 }
 
 class Read {
@@ -20,8 +23,8 @@ class Read {
   /**
     * Attention: leaves file open!
     */
-  def readConcise(): Unit = {
-    val file: JFile = resourcesFile("textfile.txt")
+  def readConcise(filename: String): Unit = {
+    val file: JFile = resourcesFile(filename)
 
     println("reading in a concise way")
     for (line <- Source.fromFile(file).getLines) {
@@ -37,9 +40,9 @@ class Read {
     */
   }
 
-  def readProperly(): Unit = {
+  def readProperly(filename: String): Unit = {
     println("reading properly")
-    val bufferedSource = Source.fromFile(resourcesFile("textfile.txt"))
+    val bufferedSource = Source.fromFile(resourcesFile(filename))
     for (line <- bufferedSource.getLines) {
       println(line)
     }
@@ -50,10 +53,10 @@ class Read {
   /**
     * reads the file with the 'loan pattern'
     */
-  def readWithLoanPattern(): Unit = {
+  def readWithLoanPattern(filename: String): Unit = {
     println("try reading")
     try {
-      val bufferedSource = Source.fromFile(resourcesFile("textfile.txt"))
+      val bufferedSource = Source.fromFile(resourcesFile(filename))
 
       try {
         for (line <- bufferedSource.getLines()) {
@@ -74,18 +77,20 @@ class Read {
   def readTextFile(filename: String): Option[List[String]] = {
     import Control._
     try {
-      val lines = using(io.Source.fromFile(filename)) { source =>
+      val lines = using(io.Source.fromFile(resourcesFile(filename))) { source =>
         (for (line <- source.getLines) yield line).toList
       }
       Some(lines)
     } catch {
-      case _: Exception => None
+      case e: Exception =>
+        println(e)
+        None
     }
   }
 }
 
 object Control {
-  def using[A <: { def close(): Unit }, B](resource: A)(f: A => B): B =
+  def using[A <: {def close() : Unit}, B](resource: A)(f: A => B): B =
     try {
       f(resource)
     } finally {
