@@ -21,4 +21,3 @@ package object hw4 {
   lazy val resDir: JFile = new JFile(projDir + "/src/main/resources/").getCanonicalFile
 
 }
-
