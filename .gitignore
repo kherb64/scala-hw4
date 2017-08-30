@@ -1,2 +1,6 @@
 .idea/
 target/
+src/main/resources/hello.txt
+src/main/resources/hello2.txt
+src/main/resources/BinaryFiles.class.copy
+src/main/resources/BinaryFiles.class.copy2
