@@ -24,7 +24,7 @@ object CSVFile {
   }
 
   def ofName(fileName: String): Option[CSVFile] = {
-    val file: Option[JFile] = hw4.File.ofName(fileName)
+    val file = hw4.File.ofName(fileName)
     file match {
       case Some(f) => Some(new CSVFile(f))
       case None => None
