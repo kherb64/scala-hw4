@@ -34,6 +34,12 @@ class Directory(val dir: JFile) {
   def getListOfFiles: List[JFile] = {
     dir.listFiles.filter(_.isFile).toList
   }
+
+  def getListOfSubDirectories: List[String] =
+    dir.listFiles
+      .filter(_.isDirectory)
+      .map(_.getName)
+      .toList
 }
 
 object ListFilesDemo extends App {
@@ -49,5 +55,9 @@ object ListFilesDemo extends App {
 
   for (dir <- Directory.ofName(dirName)) {
     println(dir.getListOfFiles.mkString("\n"))
+  }
+
+  for (dir <- Directory.ofName(hw4.projectDir.getCanonicalPath)) {
+    println(dir.getListOfSubDirectories.mkString("\n"))
   }
 }
