@@ -1,7 +1,7 @@
 
 name := "hw4"
 
-version := "1.12.0"
+version := "1.12.1-SNAPSHOT"
 
 scalaVersion := "2.12.3"
 
