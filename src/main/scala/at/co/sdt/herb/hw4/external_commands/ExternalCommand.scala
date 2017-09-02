@@ -21,8 +21,11 @@ object ExternalCommandDemo extends App {
   //ext.shellCmd(" dir ")
   //println(ext.shellCmd("dir \\temp"))
   ext.cmd("java -version")
-  println(ext.cmd("sbt -version"))
+  //println(ext.cmd("sbt version"))
   //val exitCode = Process("dir").!
-  val p = Process("cmd /c dir")
-  p.!
+  val p = Process("bash -c pwd")
+  val files = p.!!.split(" ")
+  println(files.mkString(", "))
+
+  //TODO ProcessLogger
 }
