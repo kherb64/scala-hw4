@@ -10,4 +10,8 @@ libraryDependencies ++= Seq(
   , "org.scala-lang.modules" % "scala-xml_2.12" % "1.0.6"
   , "com.typesafe.akka" % "akka-actor_2.12" % "2.5.4"
   // , "org.scala-lang" % "scala-reflect" % "2.12.3"
+  , "net.liftweb" % "lift-webkit_2.12" % "3.1.0"
+  , "io.spray" %% "spray-json" % "1.3.3"
 )
+
+// scalacOptions += "-deprecation"
