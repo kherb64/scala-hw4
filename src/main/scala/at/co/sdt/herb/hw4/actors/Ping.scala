@@ -23,7 +23,7 @@ class Ping(pong: ActorRef) extends Actor {
     context.stop(self)
   }
 
-  override def receive: PartialFunction[Any, Unit] = {
+  override def receive: Receive = {
     case StartMsg => incrementAndPrint()
       pong ! PingMsg
     case PongMsg =>
@@ -43,7 +43,7 @@ class Ping(pong: ActorRef) extends Actor {
 }
 
 class Pong extends Actor {
-  override def receive: PartialFunction[Any, Unit] = {
+  override def receive: Receive = {
     case PingMsg =>
       println(" pong")
       sender() ! PongMsg

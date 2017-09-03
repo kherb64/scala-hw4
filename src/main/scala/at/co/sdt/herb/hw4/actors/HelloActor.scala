@@ -10,7 +10,7 @@ class HelloActor extends Actor {
 }
 
 class HelloName(val name: String) extends Actor {
-  override def receive: PartialFunction[Any, Unit] = {
+  override def receive: Receive = {
     case s@"hello" => println(s"$s back from ${this.name}")
     case _ => println(s"huh? from ${this.name}")
   }
