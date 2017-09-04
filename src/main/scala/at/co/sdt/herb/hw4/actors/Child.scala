@@ -47,7 +47,7 @@ class Parent extends Actor with ActorLogging {
     case Parent.Messages.CreateChild(n) =>
       val c = context.actorOf(Child.props(n), n)
       context.watch(c)
-      //TODO: ask how to keep track of dynamic incoked child Actors
+      //answered: ask how to keep track of dynamic incoked child Actors. Yes, keep track of it manually.
       Children += c
     case Parent.Messages.Child(name) =>
       for {c <- Children
@@ -79,7 +79,7 @@ object ChildDemo extends App {
   val burli = system.actorSelection("/user/Parent/Burli")
   val bertl = system.actorSelection("/user/Parent/Bertl")
   val children = system.actorSelection("/user/Parent/*")
-  // TODO: ask why a message can be sent to an ActorSelection not only to an ActorRef
+  // answered: ask why a message can be sent to an ActorSelection not only to an ActorRef. Mehr wir Postwurfsendung
   burli ! "Hello Burli"
   burli ! PoisonPill
   bertl ! "Hello Bertl"
