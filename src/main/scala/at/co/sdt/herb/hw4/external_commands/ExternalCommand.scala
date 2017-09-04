@@ -26,6 +26,4 @@ object ExternalCommandDemo extends App {
   val p = Process("bash -c pwd")
   val files = p.!!.split(" ")
   println(files.mkString(", "))
-
-  //TODO ProcessLogger
 }
