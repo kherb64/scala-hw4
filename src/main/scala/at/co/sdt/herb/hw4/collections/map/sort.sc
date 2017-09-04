@@ -14,7 +14,7 @@ grades.toSeq.sortBy(t => t._2)
 grades.keys.toSeq.sortBy((s) => s)
 grades.values.toSeq.sortBy((s) => s)
 
-// TODO: warum mus ich hier beim Tuple2 mit case eine partioal function machen?
+// TODO: warum muss ich hier beim Tuple2 mit case eine partial function machen?
 grades.toSeq.sortBy({ case (k, _) => k })
 grades.toSeq.sortBy({ case (_, v) => v })
 
