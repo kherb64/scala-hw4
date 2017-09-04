@@ -12,8 +12,8 @@ object MarginMain extends App {
   // (margins.toList diff margins2.toList).foreach(println)
   println(margins.mkString(","))
   println(margins2.mkString(","))
-  //TODO: howto compare two sets?
-  //println(margins diff margins2.toSet)
+  //howto compare two sets? simply with ==
+  println(margins == margins2)
 
 }
 
