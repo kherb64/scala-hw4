@@ -30,9 +30,6 @@ object HttpWSPlayMain extends App {
 
   // Create Akka system for thread and streaming management
   implicit val system: ActorSystem = ActorSystem()
-  system.registerOnTermination {
-    System.exit(0)
-  }
   implicit val materializer: ActorMaterializer = ActorMaterializer()
 
   import play.api.libs.ws.ahc.StandaloneAhcWSClient
@@ -47,6 +44,7 @@ object HttpWSPlayMain extends App {
     .andThen { case _ => wsClient.close() }
     .andThen { case _ => system.terminate() }
 
-  //TODO: ask why 'Failed to load class "org.slf4j.impl.StaticLoggerBinder"'
-  //TODO: ask why 'CoordinatedShutdown from JVM shutdown failed' 10 seconds after call ended
+  //why 'Failed to load class "org.slf4j.impl.StaticLoggerBinder"'? because of missing dependency
+  //why 'CoordinatedShutdown from JVM shutdown failed' 10 seconds after call ended? prefer systme.terminate() over Systrm.exit(0)
+
 }
