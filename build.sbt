@@ -12,6 +12,8 @@ libraryDependencies ++= Seq(
   // , "org.scala-lang" % "scala-reflect" % "2.12.3"
   , "net.liftweb" % "lift-webkit_2.12" % "3.1.0"
   , "io.spray" %% "spray-json" % "1.3.3"
+  , "com.typesafe.play" % "play-ahc-ws-standalone_2.12" % "1.0.7"
+  , "org.slf4j" % "slf4j-simple" % "1.7.25"
 )
 
 // scalacOptions += "-deprecation"

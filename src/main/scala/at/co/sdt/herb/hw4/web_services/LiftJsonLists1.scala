@@ -34,6 +34,6 @@ object LiftJsonLists1 extends App {
       "state" -> f.address.state
     }
 
-  //println(pretty(render(json)))
+  // lift sucks println(pretty(render(json)))
   println(json)
 }
