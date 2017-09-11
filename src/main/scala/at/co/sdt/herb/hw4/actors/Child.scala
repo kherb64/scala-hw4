@@ -1,6 +1,6 @@
 package at.co.sdt.herb.hw4.actors
 
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, PoisonPill, Props, Terminated}
+import akka.actor.{ Actor, ActorLogging, ActorRef, ActorSystem, PoisonPill, Props, Terminated }
 
 import scala.collection.mutable.ArrayBuffer
 

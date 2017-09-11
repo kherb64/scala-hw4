@@ -1,7 +1,7 @@
 package at.co.sdt.herb.hw4.actors
 
-import akka.actor.{Actor, ActorSystem, Props}
-import at.co.sdt.herb.hw4.actors.DavidBanner.Msgs._
+import akka.actor.{ Actor, ActorSystem, Props }
+import DavidBanner.Msgs._
 
 class Become {
 
