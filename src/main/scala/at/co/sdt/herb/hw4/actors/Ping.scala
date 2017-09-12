@@ -1,6 +1,6 @@
 package at.co.sdt.herb.hw4.actors
 
-import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import akka.actor.{ Actor, ActorRef, ActorSystem, Props }
 
 case object PingMsg
 

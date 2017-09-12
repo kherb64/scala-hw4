@@ -1,6 +1,6 @@
 package at.co.sdt.herb.hw4.actors
 
-import akka.actor.{Actor, ActorSystem, Props}
+import akka.actor.{ Actor, ActorSystem, Props }
 
 class Kenny extends Actor {
   println("Kenny constructor start")
