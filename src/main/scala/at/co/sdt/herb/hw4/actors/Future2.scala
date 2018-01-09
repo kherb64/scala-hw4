@@ -1,10 +1,8 @@
 package at.co.sdt.herb.hw4.actors
 
-import scala.util.{Failure, Success}
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-import scala.util.Random
+import scala.util.{ Failure, Random, Success }
 
 object Future2 extends App {
   println("starting calculation")
@@ -12,11 +10,12 @@ object Future2 extends App {
     Thread.sleep(Random.nextInt(500))
     42
   }
+  val x = 45
 
-  println("before onComplete")
+  println(s"before onComplete, f=$f")
   f.onComplete {
-    case Success(v) => println(s"got the callback, meaning = $v")
-    case Failure(ex) => println(ex)
+    case Success(v) => println(s"got the callback, meaning = $v, x=$x, f=$f")
+    case Failure(ex) => println(s"got exception = $ex, x=$x, f=$f")
   }
 
   private def printAndSleep(a: Any, sleep: Long): Unit = {
