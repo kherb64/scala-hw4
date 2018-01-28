@@ -26,11 +26,11 @@ object Future3 extends App {
     case ex => println(s"onFailure deprecated $ex")
   }
 
-  for (i <- f) println(s"for $i")
-  f.foreach(i => println(s"foreach $i"))
+  for (i <- f) println(s"for i:$i")
+  f.foreach(i => println(s"foreach i:$i"))
   f.foreach(println)
 
-  for (ex <- f.failed) println(s"for $ex")
+  for (ex <- f.failed) println(s"for ex:$ex")
 
   private def printAndSleep(a: Any, sleep: Long): Unit = {
     println(a)
