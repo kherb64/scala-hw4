@@ -5,9 +5,11 @@ object HttpWSPlay {
   def apply(): HttpWSPlay = new HttpWSPlay
 }
 
+import play.api.libs.ws.DefaultBodyReadables
+
 import scala.concurrent.ExecutionContext.Implicits._
 
-class HttpWSPlay {
+class HttpWSPlay extends DefaultBodyReadables {
 
   import play.api.libs.ws.StandaloneWSClient
 
