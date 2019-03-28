@@ -1,8 +1,8 @@
 
 name := "hw4"
-version := "1.16.0"
-scalaVersion := "2.12.4"
-sbtVersion := "1.1.0"
+version := "1.17.0"
+scalaVersion := "2.12.8"
+sbtVersion := "1.2.8"
 
 libraryDependencies ++= Seq(
   "org.scalatest" % "scalatest_2.12" % "3.0.4" % "test"
